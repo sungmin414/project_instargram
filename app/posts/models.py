@@ -1,10 +1,13 @@
+from django.conf import settings
 from django.db import models
 
 
 class Post(models.Model):
     author = models.ForeignKey(
         # <AppName>.<ModelName>
-        'members.User',
+        # 'members.User',
+        # django 가 기본적으로 제공하는 User 클래스
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name='작성자',
     )
@@ -30,7 +33,8 @@ class Comment(models.Model):
         verbose_name='포스트',
     )
     author = models.ForeignKey(
-        'members.User',
+        # 'members.User',
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name='작성자',
     )
