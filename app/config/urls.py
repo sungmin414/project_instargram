@@ -17,12 +17,12 @@ from django.conf import settings
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('posts/', include('posts.urls')),
 ]
 # MEDIA_URL로 시작하는 URL은 static()내의 serve() 함수를 통해 처리
 # MEDIA_ROOT기준으로 파일을 검색함
